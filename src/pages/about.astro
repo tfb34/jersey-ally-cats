@@ -1,0 +1,168 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import velvetImage from "../images/velvetImage.jpg";
+import BellaImage from "../images/bella.jpeg";
+import JohnnyImage from "../images/johnny.jpeg";
+import JoyImage from "../images/joy.jpeg";
+
+import { sanityClient } from "sanity:client";
+
+const aboutPage = await sanityClient.fetch(`*[_type == "aboutPage"][0]{
+  intro{
+    ...,
+    "imageUrl": image.asset->url
+  }
+}`);
+---
+
+<SiteLayout title="About">
+  <!--Row 1 -->
+  <section class="flex flex-col md:flex-row min-h-[600px]">
+    <!--LEFT: Astro image used a CSS background -->
+    <div
+      style={`background-image: url("${aboutPage.intro.imageUrl}")`}
+      class="bg-cover bg-center lg:bg-position-[center_top_20%] w-full md:w-1/2 h-[400px] md:h-auto"
+    >
+    </div>
+    <!--RIGHT: Mission -->
+    <div class="bg-brand-primary w-full md:w-1/2 items-center flex p-16">
+      <div>
+        <h1 class="mb-10 text-brand-soft text-section-title">Our Mission</h1>
+        <p class="text-white">
+          {aboutPage.intro.text}
+        </p>
+      </div>
+    </div>
+  </section>
+  <!--Row 2 -->
+  <section class="flex flex-col md:flex-row min-h-[600px]">
+    <!--LEFT: Street Rescue -->
+    <div class="bg-brand-soft w-full md:w-1/2 items-center flex flex-col p-16">
+      <div
+        class="w-60 h-60 bg-pink-500 rounded-[100%] mb-10 bg-cover bg-center"
+        style={`background-image: url("${JohnnyImage.src}")`}
+      >
+      </div>
+      <div class="h-[200px]">
+        <h1 class="mb-10 text-brand-primary text-section-title">
+          Street Rescue
+        </h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit
+          commodi similique libero laudantium repellat odio perferendis ratione!
+          Accusamus ullam nihil recusandae commodi eum hic totam sapiente animi
+          perferendis quae eos quas aspernatur cupiditate repellendus cum
+          doloremque maxime aut, molestiae, dolores corrupti ad saepe. Rem totam
+          illum animi sit. Possimus!
+        </p>
+      </div>
+    </div>
+
+    <!--RIGHT: Complex Medical Cases -->
+    <div
+      class="bg-brand-surface w-full md:w-1/2 items-center flex flex-col p-16"
+    >
+      <div
+        class="w-60 h-60 bg-pink-500 rounded-[100%] mb-10 bg-cover bg-center"
+        style={`background-image: url("${JoyImage.src}")`}
+      >
+      </div>
+      <div class="">
+        <h1 class="mb-10 text-section-title">Complex Medical Cases</h1>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius
+          repellat consequuntur vel earum. Ea quo possimus explicabo, dolor
+          earum nam deleniti similique laborum eligendi corrupti aut dolores
+          autem cum quia ratione aspernatur rem blanditiis consequuntur quae
+          necessitatibus ad.
+        </p>
+        <details class="group">
+          <summary
+            class="cursor-pointer list-none text-link hover:underline font-bold"
+          >
+            <span class="group-open:hidden">Read more</span>
+            <span class="hidden group-open:inline">Read less</span>
+          </summary>
+
+          <p>
+            Numquam qui fugiat ut facilis excepturi officiis quae deleniti
+            distinctio est voluptatum soluta tenetur, assumenda illum eaque
+            dolore, sint porro, dolorum error illo. Voluptate, praesentium dolor
+            nobis at reprehenderit explicabo facilis perferendis ex porro illum,
+            veritatis aspernatur illo quo quod laboriosam architecto molestias
+            eius repudiandae voluptates sint accusantium alias eligendi?
+            Sapiente optio dolore animi veniam vitae consectetur fugit magnam
+            totam rem corrupti saepe modi atque amet quae reiciendis mollitia
+            error quam incidunt beatae doloribus voluptatibus odit quia,
+            perferendis autem. Magni mollitia ex, tenetur inventore ducimus
+            nobis quaerat vitae, illum animi eius impedit delectus sint sed
+            voluptates iste ipsa praesentium ad ab quas. Maiores dignissimos
+            odio porro cupiditate animi amet illo odit quisquam voluptates. Nisi
+            quae ea iure animi ad id deleniti vitae dolore voluptatem, modi
+            molestias quaerat qui, rem saepe laborum officia quidem tempora odio
+            distinctio architecto totam delectus? Ex magni ea, accusantium
+            laborum blanditiis id tempore sapiente tenetur laudantium soluta
+            veniam alias, ipsam debitis labore cumque temporibus, ipsum
+            repudiandae sed praesentium earum vitae explicabo quas. Excepturi,
+            recusandae libero nulla quia dolor facere! Illum maiores minus autem
+            accusamus modi beatae voluptatibus vel velit eius, ipsum neque
+            tempore laborum obcaecati consequatur, numquam repellendus ea minima
+            doloribus? Dicta harum asperiores distinctio minima magnam nihil sed
+            nulla, officia doloremque aliquam perspiciatis reprehenderit
+            blanditiis repudiandae totam? Vero explicabo praesentium odio
+            beatae? Ducimus, incidunt magnam? Corrupti sint tempora obcaecati
+            velit officia ea animi doloremque exercitationem reiciendis, est
+            aliquid saepe eligendi alias explicabo, dicta dolorem magnam
+            deleniti voluptas id modi ut at nam accusamus rem. Quidem autem
+            doloremque eveniet eius itaque molestias maxime modi atque iusto
+            voluptas laborum quas dolore, pariatur libero non incidunt sit
+            perspiciatis id porro fugit. Dolorum optio maxime, quia magni
+            sapiente laudantium temporibus earum molestiae voluptatibus! Debitis
+            eveniet nulla recusandae molestias fugit consectetur earum, eaque,
+            excepturi vitae dolore labore tempora sit corrupti tempore
+            laboriosam, velit officiis optio. Explicabo quod placeat doloribus
+            ab tempore numquam amet eaque magnam. Vitae perspiciatis quis
+            corporis nemo! Unde corrupti accusamus adipisci est. Nostrum quam
+            dolore architecto laboriosam nobis tempora modi, consequuntur natus
+            accusamus eveniet tenetur quibusdam aliquid unde accusantium vero
+            est libero vitae suscipit earum? Obcaecati eum sapiente est veniam
+            exercitationem laborum quaerat voluptatem earum quasi. Blanditiis
+            optio, ex odit impedit ad aperiam quod alias accusantium quisquam,
+            unde delectus autem suscipit ratione doloribus asperiores
+            perferendis voluptatem magni quaerat quidem voluptatum. Quam sunt
+            voluptatem rerum iure fugiat a quos nobis pariatur iusto! Quia,
+            optio animi commodi fuga omnis doloremque id, veniam accusamus
+            nostrum harum ex. Odit quasi soluta placeat. Porro voluptatibus,
+            saepe at perferendis sunt corrupti ad libero iusto facilis commodi?
+            Maiores laboriosam cupiditate obcaecati iusto debitis quae
+            temporibus numquam qui!
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+  <!--Row 3 -->
+  <section class="flex flex-col md:flex-row min-h-[500px]">
+    <!--LEFT: Astro image used a CSS background -->
+    <div
+      style={`background-image: url("${BellaImage.src}")`}
+      class="bg-cover bg-center w-full md:w-1/2 h-[400px] md:h-auto"
+    >
+    </div>
+    <!--RIGHT: Mission -->
+    <div class="bg-brand-primary w-full md:w-1/2 items-center flex p-16">
+      <div>
+        <h1 class="mb-10 text-brand-soft text-section-title">Our Vision</h1>
+        <p class="text-white">
+          Purrfect Catpanion is a 501(c)(3) non-profit organization founded by
+          women with a mission to make the adoption process smoother and easier
+          for both cats and adopters. Our core purpose is to reduce the
+          population and suffering of street cats by rescuing all friendlies
+          from our local communities, providing them with veterinary care,
+          socialization as needed, and ultimately finding them loving forever
+          homes.
+        </p>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

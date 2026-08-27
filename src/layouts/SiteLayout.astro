@@ -1,0 +1,21 @@
+---
+import "../styles/global.css";
+import HeaderAstroComponent from "../components/Header.astro";
+import FooterAstroComponent from "../components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cat Rescue</title>
+  </head>
+  <body>
+    <HeaderAstroComponent />
+    <main>
+      <slot />
+    </main>
+    <FooterAstroComponent />
+    <!-- your content is injected here -->
+  </body>
+</html>

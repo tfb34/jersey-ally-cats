@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors*/
+  --color-brand-primary: #553653;
+  /* --color-brand-secondary: #c96f78; */
+  --color-brand-secondary: #b45474;
+  --color-brand-accent: #f2a65a;
+  --color-brand-soft: #f7d9d5;
+  --color-brand-surface: #fff9f2;
+  --color-brand-neutral: #383438;
+
+  /* Semantic colors*/
+  --color-heading: var(--color-brand-primary);
+  --color-body:var(--color-brand-neutral);
+  --color-link: var(--color-brand-secondary);
+
+  --color-page: var(--color-brand-surface);
+  --color-surface-muted: var(--color-brand-soft);
+  --color-action-primary: var(--color-brand-secondary);
+  --color-action-accent: var(--color-brand-accent);
+
+  /* Typography*/
+  --font-heading: "Playfair Display",serif;
+  --font-body: "Inter", sans-serif;
+
+  --text-display: 3.5em;
+  --text-page-title: 2rem;
+  --text-section-title: 1.5rem;
+  --text-body: 1rem;
+}
+
+.primary-btn{
+    background-color: var(--color-brand-secondary);
+    color:white;
+    border-radius: 4%;
+    padding: 10px 24px;
+}
+.primary-btn:hover{
+    opacity:0.8;
+}
