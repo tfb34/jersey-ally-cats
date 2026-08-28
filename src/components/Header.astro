@@ -1,27 +1,30 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../images/logo.jpg";
+
+import { sanityClient } from "sanity:client";
+
+const navigation = await sanityClient.fetch(`*[_type == "aboutPage"][0]{
+  intro{
+    ...,
+    "imageUrl": image.asset->url
+  }
+}`);
 ---
 
-<!-- Include this script tag or install `@tailwindplus/elements` via npm: --><!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
 <header class="bg-white">
-  <nav
-    aria-label="Global"
-    class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-  >
-    <div class="flex lg:flex-1">
-      <a href="/" class="-m-1.5 p-1.5">
-        <span class="sr-only">Purffect Catpanion</span>
-        <Image src={logo} alt="logo" width="50" height="50" />
-      </a>
-    </div>
-    <div class="flex lg:hidden">
+  <!--landmark-->
+  <nav class="p-6 w-full shadow-md flex justify-between items-center bg-white">
+    <span><Image src={logo} alt="logo" class="h-8 w-auto" /></span>
+    <!--Mobile Only-->
+    <div class="mobile-menu md:hidden js-has-submenu" data-expanded="false">
+      <!--Burger button-->
       <button
         type="button"
-        command="show-modal"
-        commandfor="mobile-menu"
-        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+        class="absolute top-0 right-0 z-30 p-2 mx-6 mt-5 inline-flex items-center justify-center rounded-md text-gray-400 hover:bg-gray-100 focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500"
+        aria-expanded="false"
       >
+        <span class="absolute -inset-0.5"></span>
         <span class="sr-only">Open main menu</span>
         <svg
           viewBox="0 0 24 24"
@@ -30,177 +33,234 @@ import logo from "../images/logo.jpg";
           stroke-width="1.5"
           data-slot="icon"
           aria-hidden="true"
-          class="size-6"
+          class="size-6 in-aria-expanded:hidden"
         >
           <path
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
             stroke-linecap="round"
             stroke-linejoin="round"></path>
         </svg>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          data-slot="icon"
+          aria-hidden="true"
+          class="size-6 not-in-aria-expanded:hidden"
+        >
+          <path
+            d="M6 18 18 6M6 6l12 12"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
       </button>
-    </div>
-    <el-popover-group class="hidden lg:flex lg:gap-x-12">
-      <!--dropdown -->
-      <div class="group relative inline-block">
-        <a href="/about" class="text-sm/6 font-semibold text-gray-900">
-          Adopt
-          <span
-            class="inline-block rotate-180 transition-transform group-hover:rotate-360 ml-2"
-            >&#x2303;</span
-          >
-        </a>
-        <div
-          class="absolute hidden left-0 group-hover:block group-focus-within:block min-w-[220px] bg-white rounded-md shadow-lg border-1 border-gray-50"
-        >
-          <a href="#" class="block hover:bg-gray-100 px-4 py-2">Link 1</a>
-          <a href="#" class="block hover:bg-gray-100 px-4 py-2">Link 2</a>
-          <a href="#" class="block hover:bg-gray-100 px-4 py-2">Link 3</a>
-        </div>
-      </div>
 
-      <a href="#" class="text-sm/6 font-semibold text-gray-900">Foster</a>
-      <a href="#" class="text-sm/6 font-semibold text-gray-900">Get Involved</a>
-      <a href="#" class="text-sm/6 font-semibold text-gray-900">FAQ</a>
-      <a href="/about" class="text-sm/6 font-semibold text-gray-900">About</a>
-      <a href="#" class="text-sm/6 font-semibold text-gray-900">Contact</a>
-    </el-popover-group>
-    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a href="#" class="text-sm/6 font-semibold text-gray-900"
-        >Donate <span aria-hidden="true">&rarr;</span></a
+      <!--mobile menu -->
+      <ul
+        class="absolute w-full h-full top-0 right-0 bg-white p-6 space-y-2"
+        aria-hidden="true"
       >
-    </div>
-  </nav>
-  <el-dialog>
-    <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
-      <div tabindex="0" class="fixed inset-0 focus:outline-none">
-        <el-dialog-panel
-          class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
-        >
-          <div class="flex items-center justify-between">
-            <a href="#" class="-m-1.5 p-1.5">
-              <span class="sr-only">Your Company</span>
-              <img
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-                class="h-8 w-auto"
-              />
-            </a>
-            <button
-              type="button"
-              command="close"
-              commandfor="mobile-menu"
-              class="-m-2.5 rounded-md p-2.5 text-gray-700"
+        <li class="mb-6">
+          <span><Image src={logo} alt="logo" class="h-8 w-auto" /></span>
+        </li>
+        <li>
+          <details class="list-none group rounded-lg">
+            <summary
+              class="list-none text-base/7 py-2 px-3 text-gray-900 font-semibold flex rounded-lg hover:bg-gray-100"
             >
-              <span class="sr-only">Close menu</span>
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                data-slot="icon"
-                aria-hidden="true"
-                class="size-6"
-              >
-                <path
-                  d="M6 18 18 6M6 6l12 12"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
-            </button>
-          </div>
-          <div class="mt-6 flow-root">
-            <div class="-my-6 divide-y divide-gray-500/10">
-              <div class="space-y-2 py-6">
-                <div class="-mx-3">
-                  <button
-                    type="button"
-                    command="--toggle"
-                    commandfor="adopts"
-                    class="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                  >
-                    adopt
-                    <svg
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      data-slot="icon"
-                      aria-hidden="true"
-                      class="size-5 flex-none in-aria-expanded:rotate-180"
-                    >
-                      <path
-                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                        clip-rule="evenodd"
-                        fill-rule="evenodd"></path>
-                    </svg>
-                  </button>
-                  <el-disclosure
-                    id="adopts"
-                    hidden
-                    class="mt-2 block space-y-2"
-                  >
-                    <a
-                      href="#"
-                      class="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                      >Analytics</a
-                    >
-                    <a
-                      href="#"
-                      class="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                      >Engagement</a
-                    >
-                    <a
-                      href="#"
-                      class="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                      >Security</a
-                    >
-                    <a
-                      href="#"
-                      class="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                      >Integrations</a
-                    >
-                    <a
-                      href="#"
-                      class="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                      >Automations</a
-                    >
-                    <a
-                      href="#"
-                      class="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                      >Watch demo</a
-                    >
-                    <a
-                      href="#"
-                      class="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                      >Contact sales</a
-                    >
-                  </el-disclosure>
-                </div>
+              Adopt
+              <span class="flex items-center">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  data-slot="icon"
+                  aria-hidden="true"
+                  class="size-5 flex-none text-gray-400 group-open:rotate-180"
+                >
+                  <path
+                    d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"></path>
+                </svg>
+              </span>
+            </summary>
+            <ul class="space-y-2">
+              <li>
                 <a
                   href="#"
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                  >Features</a
+                  class="block hover:bg-gray-100 text-sm/7 font-semibold text-gray-900 py-2 px-6 rounded-lg"
+                  >Available Cats</a
                 >
+              </li>
+              <li>
                 <a
                   href="#"
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                  >Marketplace</a
+                  class="block hover:bg-gray-100 text-sm/7 font-semibold text-gray-900 py-2 px-6 rounded-lg"
+                  >Adoption Process</a
                 >
+              </li>
+              <li>
                 <a
                   href="#"
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                  >Company</a
+                  class="block hover:bg-gray-100 text-sm/7 font-semibold text-gray-900 py-2 px-6 rounded-lg"
+                  >Adoption FAQ</a
                 >
-              </div>
-              <div class="py-6">
+              </li>
+              <li>
                 <a
                   href="#"
-                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                  >Log in</a
+                  class="block hover:bg-gray-100 text-sm/7 font-semibold text-gray-900 py-2 px-6 rounded-lg"
+                  >Happy Tails</a
                 >
-              </div>
-            </div>
-          </div>
-        </el-dialog-panel>
-      </div>
-    </dialog>
-  </el-dialog>
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-base/7 font-semibold hover:bg-gray-100 block py-2 px-3 rounded-lg"
+            >Volunteer</a
+          >
+        </li>
+        <li>
+          <a
+            href="/about"
+            class="text-base/7 font-semibold hover:bg-gray-100 block py-2 px-3 rounded-lg"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-base/7 font-semibold hover:bg-gray-100 block py-2 px-3 rounded-lg"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-base/7 font-semibold hover:bg-gray-100 block py-2 px-3 rounded-lg"
+            >Donate ♡</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!--Desktop Menu Only-->
+    <ul class="mx-auto hidden md:flex flex-row relative items-center gap-x-12">
+      <!--Dropdown-->
+      <li class="dropdown js-has-submenu" data-expanded="false">
+        <!--dataset.expanded-->
+        <a href="#" class="hover:underline">Adopt</a>
+        <button aria-label="Submenu of Adopt" aria-expanded="false">
+          <!--aria-expanded-->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            style="transform: translateY(3px)"
+            width="16px"
+            height="16px"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M4.29289 8.29289C4.68342 7.90237 5.31658 7.90237 5.70711 8.29289L12 14.5858L18.2929 8.29289C18.6834 7.90237 19.3166 7.90237 19.7071 8.29289C20.0976 8.68342 20.0976 9.31658 19.7071 9.70711L12.7071 16.7071C12.3166 17.0976 11.6834 17.0976 11.2929 16.7071L4.29289 9.70711C3.90237 9.31658 3.90237 8.68342 4.29289 8.29289Z"
+              fill="#000000"></path>
+          </svg>
+        </button>
+        <!--submenu-->
+        <ul
+          class="w-[250px] bg-white absolute shadow-xl/30 rounded-lg p-4 space-y-2 inset-shadow-2xs"
+          aria-hidden="true"
+        >
+          <li>
+            <a
+              href="#"
+              class="py-2 px-4 hover:bg-gray-100 focus:bg-gray-200 block rounded-lg"
+              >Available Cats</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="py-2 px-4 hover:bg-gray-100 focus:bg-gray-200 block rounded-lg"
+              >Adoption Process</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="py-2 px-4 hover:bg-gray-100 focus:bg-gray-200 block rounded-lg"
+              >Adoption FAQ</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="py-2 px-4 hover:bg-gray-100 focus:bg-gray-200 block rounded-lg"
+              >Happy Tails</a
+            >
+          </li>
+        </ul>
+      </li>
+      <!--End of Dropdown-->
+      <li><a href="#" class="hover:underline">Volunteer</a></li>
+      <li><a href="/about" class="hover:underline">About</a></li>
+      <li><a href="#" class="hover:underline">Contact</a></li>
+      <li><a href="#" class="hover:underline">Donate ♡</a></li>
+    </ul>
+  </nav>
 </header>
+
+<script>
+  const menuItems = document.querySelectorAll(".js-has-submenu");
+
+  let expandedItem = null;
+
+  const expandSubMenu = (item) => {
+    const subMenu = item.querySelector("ul");
+    const button = item.querySelector("button");
+    expandedItem = item;
+
+    subMenu.setAttribute("aria-hidden", "false");
+    button.setAttribute("aria-expanded", "true");
+    item.dataset.expanded = "true";
+  };
+
+  const collapseSubMenu = (item) => {
+    const subMenu = item.querySelector("ul");
+    const button = item.querySelector("button");
+    expandedItem = item;
+
+    subMenu.setAttribute("aria-hidden", "true");
+    button.setAttribute("aria-expanded", "false");
+    item.dataset.expanded = "false";
+  };
+
+  menuItems.forEach((item) => {
+    const button = item.querySelector("button");
+
+    //KeyBoard Users
+    button.addEventListener("click", (event) => {
+      if (button.ariaExpanded === "false") {
+        expandSubMenu(item);
+      } else {
+        collapseSubMenu(item);
+      }
+    });
+
+    //Mouse Users
+    if (!item.classList.contains("mobile-menu")) {
+      item.addEventListener("mouseenter", () => {
+        expandSubMenu(item);
+      });
+
+      item.addEventListener("mouseleave", () => {
+        collapseSubMenu(item);
+      });
+    }
+  });
+</script>

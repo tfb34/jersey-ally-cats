@@ -39,3 +39,12 @@
 .primary-btn:hover{
     opacity:0.8;
 }
+
+/* Navbar */
+.dropdown ul[aria-hidden="true"]{
+  display:none;
+}
+
+.mobile-menu ul[aria-hidden="true"]{
+  display:none;
+}
