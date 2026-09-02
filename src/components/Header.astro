@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import logo from "../images/logo.jpg";
+import logo from "../images/logo.png";
 
 import { sanityClient } from "sanity:client";
 
@@ -14,8 +14,10 @@ const navigation = await sanityClient.fetch(`*[_type == "aboutPage"][0]{
 
 <header class="bg-white">
   <!--landmark-->
-  <nav class="p-6 w-full shadow-md flex justify-between items-center bg-white">
-    <span><Image src={logo} alt="logo" class="h-8 w-auto" /></span>
+  <nav
+    class="px-6 lg:px-8 py-2 w-full shadow-md flex justify-between items-center bg-white"
+  >
+    <span><Image src={logo} alt="logo" class="h-16 w-auto" /></span>
     <!--Mobile Only-->
     <div class="mobile-menu md:hidden js-has-submenu" data-expanded="false">
       <!--Burger button-->

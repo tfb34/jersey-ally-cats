@@ -1,13 +1,84 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import ButtonLink from "../components/ButtonLink.astro";
+import Container from "../components/Container.astro";
+import MissionItem from "../components/MissionItem.astro";
+import rehabilitateIcon from "../images/rehab.png";
+import fosterIcon from "../images/foster.png";
+import adoptIcon from "../images/adopt.png";
+import rescueIcon from "../images/rescue.png";
 ---
 
 <SiteLayout title="Home Page">
-  <section aria-label="introduction" class="h-full w-full">
-    intro section
+  <section
+    aria-label="introduction"
+    class="h-full w-full px-4 py-16 bg-brand-surface"
+  >
+    <Container class="grid md:grid-cols-3">
+      <div>
+        <span
+          class="text-brand-accent uppercase text-sm font-semibold mb-2 mt-6 block"
+          >Rescuing cats. building community.</span
+        >
+        <h1
+          class="font-heading text-5xl lg:text-7xl text-brand-primary font-semibold"
+        >
+          Every cat deserves a chance.
+        </h1>
+        <p class="my-4 text-base/7 lg:text-lg/7">
+          Jersey Ally Cats is a foster-based cat rescue serving Hudson County,
+          helping cats from the streets find safety, care, and loving homes
+        </p>
+        <div class="flex gap-3 items-center text-center">
+          <ButtonLink href="/">Adopt</ButtonLink>
+          <ButtonLink href="/" variant="secondary">Foster</ButtonLink>
+        </div>
+      </div>
+      <div class="col-span-2">col 2</div>
+    </Container>
   </section>
-  <section>who we are section</section>
-  <section>donate section</section>
-  <section>take action section</section>
-  <section>adoptable animals sections</section>
+
+  <section class="bg-brand-soft py-16">
+    <Container class="md:grid md:grid-cols-7">
+      <div class="col-span-2">
+        <span
+          class="text-brand-secondary uppercase text-sm font-semibold mb-2 block"
+          >Our Mission</span
+        >
+        <h2
+          class="font-heading text-2xl lg:text-4xl font-semibold text-brand-primary"
+        >
+          Better Lives for cats and the people who care for them.
+        </h2>
+        <p class="my-4 text-base/7">
+          We are a 100% volunteer, foster based rescue. We don't have a shelter.
+          Our cats live in loving foster homes while they heal, grow, and get
+          ready for their forever.
+        </p>
+        <a
+          href="/"
+          class="text-brand-primary font-semibold underline underline-offset-8 mt-2"
+          >Learn more about us &rarr;</a
+        >
+      </div>
+
+      <div class="py-16 md:col-span-5 md:pl-10 lg:pl-30">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:gap-x-12 gap-4">
+          <MissionItem title="Rescue" icon={rescueIcon}
+            >We pull cats from high-risk situations and provide the care they
+            need.</MissionItem
+          >
+          <MissionItem title="Rehabilitate" icon={rehabilitateIcon}
+            >Medicare care, vaccinations, and patience to help them heal.</MissionItem
+          >
+          <MissionItem title="Foster" icon={fosterIcon}
+            >Our foster homes give cats a safe place to grow and thrive.</MissionItem
+          >
+          <MissionItem title="Adopt" icon={adoptIcon}
+            >We match each cat with a loving family for their happy even after.</MissionItem
+          >
+        </div>
+      </div>
+    </Container>
+  </section>
 </SiteLayout>

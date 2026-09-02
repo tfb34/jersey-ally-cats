@@ -1,22 +1,93 @@
+---
+import ButtonLink from "./ButtonLink.astro";
+import FacebookLogo from "../images/icons/facebook.svg";
+import InstagramLogo from "../images/icons/instagram.svg";
+import RedditLogo from "../images/icons/reddit.svg";
+import TiktokLogo from "../images/icons/tiktok.svg";
+import Container from "./Container.astro";
+import { Image } from "astro:assets";
+import logo from "../images/jac-logo.png";
+---
+
 <footer
-  class="w-full h-auto md:h-[300px] bg-brand-neutral grid grid-cols-1 md:grid-cols-2 text-white pt-[50px]"
+  class="py-16 pb-8 border border-2 border-gray-300 md:py-32 bg-brand-primary"
 >
-  <div class="text-center">
-    <h1 class="text-section-title">Subscribe</h1>
-    <p>Sign up with your email address to receive<br />news and updates.</p>
-    <div>
-      <label for="email" class="sr-only">Email Address</label>
-      <input
-        type="email"
-        aria-label="email input field"
-        required
-        class="mt-[20px] md:mt-[50px] bg-white py-2 px-4 text-black mr-2"
-      />
-      <button class="primary-btn mt-2 md:mt-0">Sign Up</button>
+  <Container>
+    <div class="footer-main md:grid grid-cols-3 gap-4 w-full mb-10 md:mb-20">
+      <section class="max-w-xl lg:max-w-lg md:col-span-2 mb-10">
+        <h2
+          class="text-4xl text-gray-900 font-semibold font-heading text-white"
+        >
+          Stay Connected
+        </h2>
+        <p class="text-gray-600 text-lg mt-4 text-white">
+          Sign up for our newsletter to stay connected with our mission, learn
+          how you can support local animals, and see the direct impact of your
+          love.
+        </p>
+        <div class="md:flex mt-4 gap-x-4">
+          <label for="email" class="sr-only">Email</label>
+          <input
+            class="input px-4 py-2 bg-white text-gray-900 text-base w-full md:flex-[2] border rounded-md border-gray-400 focus:outline-2 focus:outline-indigo-500 placeholder:text-gray-400 focus:-outline-offset-1"
+            type="email"
+            id="email"
+            name="email"
+            aria-describedby="EmailInfo"
+            placeholder="Enter your email"
+          />
+          <ButtonLink href="/" class="md:flex-1 block">Sign Up</ButtonLink>
+        </div>
+      </section>
+      <!--Follow Along -->
+      <section class="md:col-span-1">
+        <h3
+          class="font-semibold text-base/7 uppercase text-brand-secondary mb-4"
+        >
+          Follow Along
+        </h3>
+        <ul class="space-y-4">
+          <li>
+            <a href="/" class="text-sm flex items-center gap-3 text-white"
+              ><InstagramLogo width={24} height={24} fill="currentColor" />
+              <span class="">Instagram</span></a
+            >
+          </li>
+          <li>
+            <a href="/" class="text-sm flex items-center gap-3 text-white"
+              ><FacebookLogo width={24} height={24} fill="currentColor" />
+              <span class="">Facebook</span></a
+            >
+          </li>
+          <li>
+            <a href="/" class="text-sm flex items-center gap-3 text-white"
+              ><RedditLogo width={24} height={24} fill="currentColor" />
+              <span class="">Reddit</span></a
+            >
+          </li>
+          <li>
+            <a href="/" class="text-sm flex items-center gap-3 text-white"
+              ><TiktokLogo width={24} height={24} fill="currentColor" />
+              <span class="">Tiktok</span></a
+            >
+          </li>
+          <li class="w-40 md:w-50">
+            <ButtonLink href="/" class="block">♡ Donate</ButtonLink>
+          </li>
+        </ul>
+      </section>
     </div>
-  </div>
-  <div class="text-center mt-[50px] md:mt-0">
-    <button class="primary-btn">DONATE &#9825;</button><br />
-    <small> Copyright © 2026 PurrfectCatpanion. All Rights Reserved. </small>
-  </div>
+
+    <div
+      class="footer-bottom flex flex-col md:flex-row justify-between pt-10 border-t border-brand-secondary text-center items-center"
+    >
+      <span class="text-sm text-white">
+        &copy;2026 Jersey Ally Cats. All rights reserved.</span
+      >
+      <Image src={logo} alt="Logo" class="h-16 w-auto" />
+      <div class="flex divide-x-1 text-white mx-auto md:mx-0">
+        <span class="px-2 text-sm">Contact US</span>
+        <span class="px-2 text-sm">Privacy Policy</span>
+      </div>
+    </div>
+  </Container>
 </footer>
