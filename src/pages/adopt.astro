@@ -1,0 +1,183 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Container from "../components/Container.astro";
+import MissionItem from "../components/MissionItem.astro";
+import ButtonLink from "../components/ButtonLink.astro";
+import applyIcon from "../images/icons/apply-icon.svg";
+import messageIcon from "../images/icons/message-icon.svg";
+import houseHeartIcon from "../images/icons/house-heart-icon.svg";
+import heartIcon from "../images/icons/heart-icon.svg";
+import FaqItem from "../components/FaqItem.astro";
+import IconListItem from "../components/IconListItem.astro";
+
+import Icon from "../images/icons/cross.png";
+---
+
+<SiteLayout>
+  <section class="wallpaper">
+    <Container>
+      <div class="md:grid md:grid-cols-5">
+        <div class="col-span-2">
+          <PageHeader
+            title="adopt"
+            headline="Find your new best friend."
+            description="Meet the cats looking for loving homes and learn how our adoption process
+                works."
+          />
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <Container>
+      <h2
+        class="font-heading text-brand-primary section-heading font-semibold text-center mb-6 md:mb-10"
+      >
+        How Adoption Works
+      </h2>
+
+      <ul
+        class="md:grid md:grid-cols-4 md:gap-10 xl:gap-30 xl:px-10 space-y-8 mb-6"
+      >
+        <li>
+          <MissionItem title="1. Apply" icon={applyIcon}
+            >Submit an adoption application</MissionItem
+          >
+        </li>
+        <li>
+          <MissionItem title="2. Connect" icon={messageIcon}
+            >We'll reach out to chat and help match you with the right cat.</MissionItem
+          >
+        </li>
+        <li>
+          <MissionItem title="3. Meet" icon={houseHeartIcon}
+            >Meet your potential new best friend in their foster home.</MissionItem
+          >
+        </li>
+        <li>
+          <MissionItem title="4. Adopt & Love" icon={heartIcon}
+            >Meet your potential new best friend in their foster home.</MissionItem
+          >
+        </li>
+      </ul>
+      <div class="">
+        <ButtonLink href="#" class="block md:w-1/3 lg:w-1/4 mx-auto"
+          >Let's get started!</ButtonLink
+        >
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-12 md:py-16 bg-brand-cream">
+    <Container>
+      <div class="md:grid grid-cols-2">
+        <div class="md:max-w-3/4">
+          <h2
+            class="font-heading text-brand-neutral font-semibold mb-4 text-2xl lg:text-5xl"
+          >
+            Adoption Fees &amp; What's Included
+          </h2>
+          <p class="text-base/7 md:text-lg/7 mb-10">
+            Every cat deserves a healthy start. Before adoption, our cats
+            recieve essential veterinary care to help prepare them for their
+            forever homes.
+          </p>
+        </div>
+        <div class="mb-8">
+          <h3
+            class="font-heading text-brand-primary text-2xl font-semibold mb-8"
+          >
+            Your adoption fee helps cover:
+          </h3>
+          <ul class="space-y-4">
+            <IconListItem
+              icon={Icon}
+              title="Spay or Neuter"
+              description="Includes age-appropriate rabies and FVRCP vaccines."
+            />
+
+            <IconListItem
+              icon={Icon}
+              title="FIV / FeLV Testing"
+              description="Cats are tested as part of their veterinary care."
+            />
+
+            <IconListItem
+              icon={Icon}
+              title="Microchip"
+              description="Registered microchipping before adoption."
+            />
+
+            <IconListItem
+              icon={Icon}
+              title="Preventative Care"
+              description="Flea treatment and deworming."
+            />
+          </ul>
+        </div>
+      </div>
+      <div class="w-full text-center border-t border-brand-primary py-4">
+        <h3
+          class="font-heading text-brand-primary font-semibold text-md md:text-2xl"
+        >
+          Adoption fee: $200-$250
+        </h3>
+        <p class="italic text-sm">Unless otherwise noted.</p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <Container>
+      <h2
+        class="section-heading text-brand-primary font-semibold text-center mb-3"
+      >
+        Adoption FAQ
+      </h2>
+      <p class="text-center text-base">
+        A few things to know before bringing home your new best friend.
+      </p>
+      <!--accordion stuff -->
+      <div
+        class="border border-1 border-brand-soft w-full lg:w-4/6 mx-auto rounded-lg mt-8"
+      >
+        <FaqItem
+          question="How long does the adoption process take?"
+          answer="Timing can vary depending on the cat, application review, and scheduling a
+  meet-and-greet. Most adoptions are completed within a few days to a couple of
+  weeks."
+          class="border-b border-brand-soft"
+        />
+        <FaqItem
+          question="Can I meet a cat before adopting?"
+          answer="Timing can vary depending on the cat, application review, and scheduling a
+  meet-and-greet. Most adoptions are completed within a few days to a couple of
+  weeks."
+          class="border-b border-brand-soft"
+        />
+        <FaqItem
+          question="What is included with adoption?"
+          answer="Timing can vary depending on the cat, application review, and scheduling a
+  meet-and-greet. Most adoptions are completed within a few days to a couple of
+  weeks."
+          class="border-b border-brand-soft"
+        />
+        <FaqItem
+          question="What if I already have pets?"
+          answer="Timing can vary depending on the cat, application review, and scheduling a
+  meet-and-greet. Most adoptions are completed within a few days to a couple of
+  weeks."
+          class="border-b border-brand-soft"
+        />
+        <FaqItem
+          question="What if the adoption doesn't work out?"
+          answer="Timing can vary depending on the cat, application review, and scheduling a
+  meet-and-greet. Most adoptions are completed within a few days to a couple of
+  weeks."
+        />
+      </div>
+    </Container>
+  </section>
+</SiteLayout>

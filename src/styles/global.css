@@ -10,6 +10,7 @@
   --color-brand-soft: #f7d9d5;
   --color-brand-surface: #fff9f2;
   --color-brand-neutral: #383438;
+  --color-brand-cream: #F8EFF1;
 
   /* Semantic colors*/
   --color-heading: var(--color-brand-primary);
@@ -51,4 +52,11 @@
 
 .mobile-menu ul[aria-hidden="true"]{
   display:none;
+}
+.section-heading{
+  @apply text-2xl md:text-3xl font-heading;
+}
+
+.wallpaper{
+  background-image: url('/images/header-wallpaper.png');
 }

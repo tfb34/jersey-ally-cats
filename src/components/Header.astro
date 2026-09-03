@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import logo from "../images/logo.png";
+import logo from "../images/logo-dark.png";
 
 import { sanityClient } from "sanity:client";
 
@@ -12,10 +12,10 @@ const navigation = await sanityClient.fetch(`*[_type == "aboutPage"][0]{
 }`);
 ---
 
-<header class="bg-white">
+<header class="bg-brand-surface">
   <!--landmark-->
   <nav
-    class="px-6 lg:px-8 py-2 w-full shadow-md flex justify-between items-center bg-white"
+    class="px-6 lg:px-8 py-2 w-full shadow-md flex justify-between items-center"
   >
     <span><Image src={logo} alt="logo" class="h-16 w-auto" /></span>
     <!--Mobile Only-->
@@ -71,7 +71,7 @@ const navigation = await sanityClient.fetch(`*[_type == "aboutPage"][0]{
             <summary
               class="list-none text-base/7 py-2 px-3 text-gray-900 font-semibold flex rounded-lg hover:bg-gray-100"
             >
-              Adopt
+              Get Involved
               <span class="flex items-center">
                 <svg
                   viewBox="0 0 20 20"
@@ -153,10 +153,13 @@ const navigation = await sanityClient.fetch(`*[_type == "aboutPage"][0]{
     <!--Desktop Menu Only-->
     <ul class="mx-auto hidden md:flex flex-row relative items-center gap-x-12">
       <!--Dropdown-->
+      <li><a href="/" class="hover:underline">Home</a></li>
+      <li><a href="/adopt" class="hover:underline">Adopt</a></li>
+      <li><a href="#" class="hover:underline">Foster</a></li>
       <li class="dropdown js-has-submenu" data-expanded="false">
         <!--dataset.expanded-->
-        <a href="#" class="hover:underline">Adopt</a>
-        <button aria-label="Submenu of Adopt" aria-expanded="false">
+        <a href="#" class="hover:underline">Get Involved</a>
+        <button aria-label="Submenu of Get Involved" aria-expanded="false">
           <!--aria-expanded-->
           <svg
             xmlns="http://www.w3.org/2000/svg"
