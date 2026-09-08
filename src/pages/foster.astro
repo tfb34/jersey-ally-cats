@@ -1,0 +1,232 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Container from "../components/Container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { Image } from "astro:assets";
+import IconListItem from "../components/IconListItem.astro";
+import ButtonLink from "../components/ButtonLink.astro";
+import fosterBasicCat from "../images/foster-basics-cat.png";
+import FaqItem from "../components/FaqItem.astro";
+
+import testImage from "../images/bella.jpeg";
+import checkMark from "../images/icons/checkmark.png";
+---
+
+<SiteLayout>
+  <section class="wallpaper">
+    <Container>
+      <div class="md:grid md:grid-cols-5">
+        <div class="col-span-2">
+          <PageHeader
+            title="foster"
+            headline="Be the safe haven for a kitty in need."
+            description="Our amazing fosters give rescue cats a place to thrive."
+          />
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <Container>
+      <!-- <h2
+        class="font-heading text-brand-primary section-heading font-semibold text-center mb-6 md:mb-10"
+      >
+        Why foster?
+      </h2> -->
+
+      <p class="text-base/7 md:text-md/7">
+        A temporary home can change a cat's entire future. In Hudson County,
+        local shelters and rescues care for countless cats who need somewhere
+        safe to land before they find their forever homes. Foster homes give
+        these cats the space to heal, decompress, and show their personalities
+        outside of a shelter environment. And every foster home creates room to
+        save another cat. You don't have to be ready to adopt to make a
+        difference. By opening your home temporarily, you're giving a cat a safe
+        place to stay, and giving another cat the chance to be rescued.
+      </p>
+    </Container>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <Container>
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="order-2 md:order-1">
+          <h2
+            class="text-brand-primary section-heading font-semibold mb-6 md:mb-10"
+          >
+            What is fostering?
+          </h2>
+          <p class="text-base/7">
+            Fostering means opening your home to a cat who needs a safe, loving
+            place to stay while they wait for their forever home. <br /><br
+            />The rescue remains involved throughout the foster journey. We
+            provide guidance and support, coordinate veterinary care and
+            adoption, and work with you to make sure your foster cat has
+            everything they need.<br /><br />
+
+            <strong
+              >You provide the home. We provide the support. Together, we help a
+              cat get ready for their next chapter. 🐾</strong
+            >
+          </p>
+        </div>
+        <div class="flex justify-center order-1 md:order-2 mb-10 md:mb-auto">
+          <Image
+            src={testImage}
+            alt="cat picture"
+            class="rounded-2xl md:w-3/4 h-auto"
+          />
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!--Foster basics -->
+  <section class="py-12 md:py-16">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-10">
+        <div class="md:col-span-1 lg:flex lg:flex-col justify-between">
+          <div>
+            <h2 class="section-heading text-brand-primary mb-4 font-semibold">
+              Foster Basics
+            </h2>
+            <p class="text-base/7 mb-4">
+              Here's what you can expect as part of our foster team.
+            </p>
+          </div>
+          <Image
+            src={fosterBasicCat}
+            alt="Cat drawing with the caption Temporary homes. Brighter tomorrows."
+            class="hidden lg:block"
+          />
+        </div>
+        <!--Foster Items -->
+        <div
+          class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8"
+        >
+          <div
+            class="p-4 border border-2 rounded-lg bg-brand-cream border-gray-200"
+          >
+            <IconListItem
+              icon={checkMark}
+              title="Care for your foster"
+              description="Provide a safe, clean space and handle their everyday needs, including meals, fresh water, litter care, play, socialization,and any medications or care instructions provided by our team. If you're ever unsure, just ask!"
+              class="flex-col items-start"
+            />
+          </div>
+          <div
+            class="p-4 border border-2 rounded-lg bg-brand-cream border-gray-200"
+          >
+            <IconListItem
+              icon={checkMark}
+              title="Keep us in the loop"
+              class="flex-col items-start"
+              description="Stay in regular contact and share updates about your foster’s health, behavior, personality, and progress. Photos and videos are especially important—they help us show potential adopters who your foster really is."
+            />
+          </div>
+          <div
+            class="p-4 border border-2 rounded-lg bg-brand-cream border-gray-200"
+          >
+            <IconListItem
+              icon={checkMark}
+              title="Help them find their home"
+              class="flex-col items-start"
+              description="Work with us on adoption-related needs, such as meet-and-greets and sharing information about your foster. All applications and placements are coordinated through the rescue."
+            />
+          </div>
+          <div
+            class="p-4 border border-2 rounded-lg bg-brand-cream border-gray-200"
+          >
+            <IconListItem
+              icon={checkMark}
+              title="Be there for the journey"
+              class="flex-col items-start"
+              description="We hope you can foster until adoption. If your availability changes, let us know as early as possible so we have time to arrange another safe placement for your foster."
+            />
+          </div>
+        </div>
+      </div>
+
+      <!--Call to action -->
+      <div
+        class="bg-brand-cream grid px-4 py-4 mt-8 grid-cols-1 lg:grid-cols-3 lg:px-10 lg:py-5 rounded-lg lg:mt-10 items-center text-center lg:text-left"
+      >
+        <div class="lg:col-span-2 mb-4">
+          <h3 class="text-brand-primary text-md/7 font-semibold mb-2">
+            Your love makes all the difference.
+          </h3>
+          <p class="text-sm/6">
+            There's no perfect foster. Just patience, kindness, and a
+            willingness to help a cat in need. We'll be with you every step of
+            the way.
+          </p>
+        </div>
+        <div class="lg:col-span-1 mb-4 lg:mb-0">
+          <ButtonLink href="#">Meet Cats Needing Foster</ButtonLink>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section>
+    <Container>
+      <div
+        style="width:100%;height:500px;"
+        data-fillout-id="4kmTEHpGicus"
+        data-fillout-embed-type="standard"
+        data-fillout-inherit-parameters
+        data-fillout-dynamic-resize
+      >
+      </div><script src="https://server.fillout.com/embed/v1/"></script>
+    </Container>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <Container>
+      <h2
+        class="section-heading text-brand-primary font-semibold text-center mb-3"
+      >
+        Foster FAQ
+      </h2>
+      <p class="text-center text-base">
+        Still have questions? Here are a few things other fosters often want to
+        know.
+      </p>
+      <!--accordion stuff -->
+      <div
+        class="border border-1 border-brand-soft w-full lg:w-4/6 mx-auto rounded-lg mt-8"
+      >
+        <FaqItem
+          question="I live outside Hudson County. Can I still foster?"
+          answer="If you live a little farther away, you may still be able to foster if you can help with transportation or have experience caring for cats with additional needs."
+          class="border-b border-brand-soft"
+        />
+        <FaqItem
+          question="Can I foster if I already have pets?"
+          answer="Yes! Your current pets must be appropriately vetted for their age, inluding being spayed or neutered, vaccinated, parasite-free, and tested for FIV/FeLV when applicable. We may ask for veterinary records as part of the foster application."
+          class="border-b border-brand-soft"
+        />
+        <FaqItem
+          question="Do I need experience with cats?"
+          answer="No. Many cats simply need a safe, loving temporary home and basic daily care. If a cat has specialized needs such as bottle feeding we'll look for a foster with the appropriate experience."
+          class="border-b border-brand-soft"
+        />
+        <FaqItem
+          question="Do I need a car to foster?"
+          answer="If you live within Hudson County, no. If you live farther away you may need a car to transport the cat for appointments or other rescue-related needs."
+          class="border-b border-brand-soft"
+        />
+        <FaqItem
+          question="How long will I have my foster cat?"
+          class="border-b border-brand-soft"
+          answer="We ask fosters to commit to their cat until adoptiom whenever possible. The timeline varies from cat to cat, so there isn't a guaranteed length of stay. If your availability changes, let us know as early as possible so we have ti,e to arrange another safe placement. "
+        />
+        <FaqItem
+          question="Am I responsible for finding the adopter?"
+          answer="No. We coordinate applications and placements through the rescue to ensure the safety of all parties. We may ask you to share information about your foster cat and participate in meet-and-greets because you know their personality best, but you won't be responsible for screening or approving adopters yourself.  "
+        />
+      </div>
+    </Container>
+  </section>
+</SiteLayout>
