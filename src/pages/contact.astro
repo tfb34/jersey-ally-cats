@@ -14,8 +14,6 @@ import { Resend } from "resend";
 
 const success = Astro.url.searchParams.get("success") === "true";
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
 export const prerender = false;
 
 const errors = { name: "", email: "", subject: "", message: "" };
@@ -28,6 +26,8 @@ let values = {
 };
 
 if (Astro.request.method === "POST") {
+  const resend = new Resend(import.meta.env.RESEND_API_KEY);
+
   try {
     const data = await Astro.request.formData();
 
