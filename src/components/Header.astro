@@ -66,6 +66,21 @@ const navigation = await sanityClient.fetch(`*[_type == "aboutPage"][0]{
         <li class="mb-6">
           <span><Image src={logo} alt="logo" class="h-8 w-auto" /></span>
         </li>
+
+        <li>
+          <a
+            href="/"
+            class="text-base/7 font-semibold hover:bg-gray-100 block py-2 px-3 rounded-lg"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="/adopt"
+            class="text-base/7 font-semibold hover:bg-gray-100 block py-2 px-3 rounded-lg"
+            >Adopt</a
+          >
+        </li>
         <li>
           <details class="list-none group rounded-lg">
             <summary
@@ -90,41 +105,41 @@ const navigation = await sanityClient.fetch(`*[_type == "aboutPage"][0]{
             <ul class="space-y-2">
               <li>
                 <a
-                  href="#"
+                  href="/foster"
                   class="block hover:bg-gray-100 text-sm/7 font-semibold text-gray-900 py-2 px-6 rounded-lg"
-                  >Available Cats</a
+                  >Foster</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/volunteer"
+                  class="block hover:bg-gray-100 text-sm/7 font-semibold text-gray-900 py-2 px-6 rounded-lg"
+                  >Volunteer</a
                 >
               </li>
               <li>
                 <a
                   href="#"
                   class="block hover:bg-gray-100 text-sm/7 font-semibold text-gray-900 py-2 px-6 rounded-lg"
-                  >Adoption Process</a
+                  >TNR</a
                 >
               </li>
               <li>
                 <a
                   href="#"
                   class="block hover:bg-gray-100 text-sm/7 font-semibold text-gray-900 py-2 px-6 rounded-lg"
-                  >Adoption FAQ</a
+                  >Events</a
                 >
               </li>
               <li>
                 <a
                   href="#"
                   class="block hover:bg-gray-100 text-sm/7 font-semibold text-gray-900 py-2 px-6 rounded-lg"
-                  >Happy Tails</a
+                  >Fundraise</a
                 >
               </li>
             </ul>
           </details>
-        </li>
-        <li>
-          <a
-            href="#"
-            class="text-base/7 font-semibold hover:bg-gray-100 block py-2 px-3 rounded-lg"
-            >Volunteer</a
-          >
         </li>
         <li>
           <a
@@ -155,7 +170,6 @@ const navigation = await sanityClient.fetch(`*[_type == "aboutPage"][0]{
       <!--Dropdown-->
       <li><a href="/" class="hover:underline">Home</a></li>
       <li><a href="/adopt" class="hover:underline">Adopt</a></li>
-      <li><a href="/foster" class="hover:underline">Foster</a></li>
       <li class="dropdown js-has-submenu" data-expanded="false">
         <!--dataset.expanded-->
         <a href="#" class="hover:underline">Get Involved</a>
@@ -183,36 +197,42 @@ const navigation = await sanityClient.fetch(`*[_type == "aboutPage"][0]{
         >
           <li>
             <a
-              href="#"
+              href="/foster"
               class="py-2 px-4 hover:bg-gray-100 focus:bg-gray-200 block rounded-lg"
-              >Available Cats</a
+              >Foster</a
+            >
+          </li>
+          <li>
+            <a
+              href="/volunteer"
+              class="py-2 px-4 hover:bg-gray-100 focus:bg-gray-200 block rounded-lg"
+              >Volunteer</a
+            >
+          </li>
+          <li>
+            <a
+              href="/tnr"
+              class="py-2 px-4 hover:bg-gray-100 focus:bg-gray-200 block rounded-lg"
+              >TNR</a
             >
           </li>
           <li>
             <a
               href="#"
               class="py-2 px-4 hover:bg-gray-100 focus:bg-gray-200 block rounded-lg"
-              >Adoption Process</a
+              >Events</a
             >
           </li>
           <li>
             <a
               href="#"
               class="py-2 px-4 hover:bg-gray-100 focus:bg-gray-200 block rounded-lg"
-              >Adoption FAQ</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="py-2 px-4 hover:bg-gray-100 focus:bg-gray-200 block rounded-lg"
-              >Happy Tails</a
+              >Fundraise</a
             >
           </li>
         </ul>
       </li>
       <!--End of Dropdown-->
-      <li><a href="#" class="hover:underline">Volunteer</a></li>
       <li><a href="/about" class="hover:underline">About</a></li>
       <li><a href="/contact" class="hover:underline">Contact</a></li>
       <li><a href="#" class="hover:underline">Donate ♡</a></li>
