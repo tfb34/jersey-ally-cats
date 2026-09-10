@@ -11,6 +11,7 @@ import greenCheckIcon from "../images/icons/green-check.png";
 import { Image } from "astro:assets";
 
 import { Resend } from "resend";
+import { getSecret } from "astro:env/server";
 
 const success = Astro.url.searchParams.get("success") === "true";
 
@@ -26,7 +27,12 @@ let values = {
 };
 
 if (Astro.request.method === "POST") {
-  const resend = new Resend(import.meta.env.RESEND_API_KEY);
+  // const resend = new Resend(import.meta.env.RESEND_API_KEY);
+  const resend = new Resend(getSecret("RESEND_API_KEY"));
+
+  if (!resend) {
+    throw new Error("Resend_API_KEY is not configured");
+  }
 
   try {
     const data = await Astro.request.formData();
