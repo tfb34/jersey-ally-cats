@@ -26,6 +26,7 @@ const { icon, title, description, class: extraClasses } = Astro.props;
     <h4 class="text-lg font-heading text-brand-primary font-semibold">
       {title}
     </h4>
+    <slot />
     <p class="text-base/7">{description}</p>
   </div>
 </li>
